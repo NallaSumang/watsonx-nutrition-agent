@@ -9,7 +9,7 @@ Standard generic dietary advice often fails to account for specific medical cons
 ## 🗂️ Repository Contents
 As per the assignment submission guidelines, this repository contains the following core artifacts:
 
-*   📄 **`yourproblemstatement.pdf`**: A comprehensive breakdown of the problem landscape, proposed AI intervention, and project scope.
+*   📄 **`problemstatement.pdf`**: A comprehensive breakdown of the problem landscape, proposed AI intervention, and project scope.
 *   📊 **`your projectpresntation.pptx`**: A 5-slide pitch deck detailing the challenge, technical architecture, and UI outcomes.
 *   ⚙️ **`app.json`**: A structured JSON configuration file that maps the agent's architecture, foundational model parameters, and behavior rules deployed on watsonx Orchestrate.
 
