@@ -3,50 +3,259 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI-Powered Nutrition Agent</title>
+    <title>AI-Powered Nutrition Agent | watsonx Orchestrate</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        :root {
+            --primary: #0f62fe; /* IBM Blue */
+            --secondary: #00e676; /* Health Green */
+            --bg-color: #050a1f; /* Deep Dark Blue */
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --text-main: #f4f7f6;
+            --text-muted: #a0aec0;
+        }
+
+        * {
             margin: 0;
             padding: 0;
-            background-color: #f4f7f6;
+            box-sizing: border-box;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated Background Gradients */
+        .bg-blob {
+            position: absolute;
+            filter: blur(120px);
+            z-index: -1;
+            opacity: 0.6;
+            animation: float 10s infinite ease-in-out alternate;
+        }
+        .blob-1 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(15,98,254,0.4) 0%, rgba(0,0,0,0) 70%);
+            top: -100px;
+            left: -100px;
+        }
+        .blob-2 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(0,230,118,0.2) 0%, rgba(0,0,0,0) 70%);
+            bottom: -50px;
+            right: -100px;
+            animation-delay: -5s;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px) scale(1); }
+            100% { transform: translateY(30px) scale(1.1); }
+        }
+
+        /* Navbar */
+        nav {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            height: 100vh;
-            color: #333;
+            padding: 24px 48px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(5, 10, 31, 0.6);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
-        .container {
+
+        .logo {
+            font-size: 1.2rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo span {
+            color: var(--primary);
+        }
+
+        .badge {
+            background: rgba(15, 98, 254, 0.15);
+            color: #78a9ff;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: 1px solid rgba(15, 98, 254, 0.3);
+        }
+
+        /* Main Hero Section */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             text-align: center;
-            background: white;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            max-width: 600px;
         }
+
         h1 {
-            color: #0f62fe;
-            margin-bottom: 10px;
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, #ffffff 0%, #a0aec0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            max-width: 900px;
         }
-        p {
-            font-size: 1.1rem;
+
+        h1 .highlight {
+            background: linear-gradient(135deg, #0f62fe 0%, #00e676 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin-bottom: 48px;
             line-height: 1.6;
-            color: #555;
+        }
+
+        /* Feature Cards */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            width: 100%;
+            margin-top: 40px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 32px;
+            text-align: left;
+            backdrop-filter: blur(12px);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(15, 98, 254, 0.4);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
             margin-bottom: 20px;
         }
-        .bot-instruction {
-            font-weight: bold;
-            color: #0f62fe;
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            color: #fff;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            line-height: 1.5;
+            font-size: 0.95rem;
+        }
+
+        /* Pulsing interaction cue */
+        .cta-container {
+            margin-top: 80px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            animation: pulse-fade 2s infinite alternate;
+        }
+
+        .cta-text {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #78a9ff;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .arrow-down {
+            width: 24px;
+            height: 24px;
+            border-bottom: 3px solid #78a9ff;
+            border-right: 3px solid #78a9ff;
+            transform: rotate(45deg);
+        }
+
+        @keyframes pulse-fade {
+            0% { opacity: 0.5; transform: translateY(0); }
+            100% { opacity: 1; transform: translateY(10px); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            nav { padding: 16px 24px; flex-direction: column; gap: 12px; }
+            .cta-container { margin-top: 40px; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>AI-Powered Nutrition Agent</h1>
-        <p>Welcome to the autonomous Nutrition Agent, powered by <strong>IBM watsonx Orchestrate</strong>.</p>
-        <p>This agent provides personalized, evidence-based meal plans, portion guidelines, and nutritional interventions.</p>
-        <p class="bot-instruction">Click the chat bubble in the bottom right corner to start chatting with the agent! 💬</p>
-    </div>
+    <div class="bg-blob blob-1"></div>
+    <div class="bg-blob blob-2"></div>
+
+    <nav>
+        <div class="logo">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="#0F62FE"/>
+                <path d="M2 17L12 22L22 17M2 12L12 17L22 12" stroke="#0F62FE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            watsonx <span>Agent</span>
+        </div>
+        <div class="badge">IBM SkillsBuild Internship Project</div>
+    </nav>
+
+    <main>
+        <h1>Autonomous <span class="highlight">Clinical Nutrition</span> Agent</h1>
+        <p class="subtitle">
+            An advanced AI orchestration powered by <strong>watsonx</strong> and the <strong>ReAct</strong> framework. Dynamically generates evidence-based meal plans while handling complex medical constraints like Type 2 Diabetes.
+        </p>
+
+        <div class="features">
+            <div class="card">
+                <div class="card-icon">🧠</div>
+                <h3>ReAct Framework</h3>
+                <p>Employs Reason + Act cognitive architecture to break down complex dietary requirements, consult nutritional databases, and synthesize accurate meal plans.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🩺</div>
+                <h3>Medical Constraints</h3>
+                <p>Designed to deeply understand user biomarkers and conditions. It adjusts macronutrient ratios and flags contraindicated foods autonomously.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">⚡</div>
+                <h3>watsonx Orchestrate</h3>
+                <p>Seamlessly deployed via IBM's enterprise AI platform, providing a robust, highly-available chatbot interface capable of invoking custom skills.</p>
+            </div>
+        </div>
+
+        <div class="cta-container">
+            <div class="cta-text">Access the Agent Below</div>
+            <div class="arrow-down"></div>
+        </div>
+    </main>
 
     <!-- The root element required by watsonx orchestrate -->
     <div id="root"></div>
