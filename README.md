@@ -27,16 +27,16 @@ The actual functioning AI agent is built and hosted natively on the **IBM watson
 Below is the configuration, knowledge grounding, and execution workflow of the Nutrition Agent within **IBM Watsonx Orchestrate**:
 
 ### 1. Persona & Behavior Configuration
-*Establishing strict operational constraints, system instructions, and structured markdown output formatting.*
-![Agent Profile & Behavior Setup](./assets/agent-profile-behavior.png)
+Establishing strict operational constraints, system instructions, and structured markdown output formatting.
+![Agent Profile & Behavior Setup](./assets/assets/agent-profile-behavior.png)
 
 ### 2. Knowledge Ingestion & Context Grounding
-*Uploading normalized domain files as active runtime knowledge sources to mitigate hallucination vectors.*
-![Knowledge Source Ingestion](./assets/knowledge-source-ingestion.png)
+Uploading normalized domain files as active runtime knowledge sources to mitigate hallucination vectors.
+![Knowledge Source Ingestion](./assets/assets/knowledge-source-ingestion.png)
 
 ### 3. Live Debug & Multi-Turn Execution
-*Validating context-aware user variable parsing and generating structured advisory outputs in debug mode.*
-![Live Debug Execution](./assets/live-debug-execution.png)
+Validating context-aware user variable parsing and generating structured advisory outputs in debug mode.
+![Live Debug Execution](./assets/assets/live-debug-execution.png)
 ---
 **Author:** Nalla Sumang
 **Program:** IBM SkillsBuild / Edunet Foundation AI & Cloud Intern
