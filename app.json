@@ -1,0 +1,35 @@
+{
+  "project": {
+    "name": "watsonx-nutrition-agent",
+    "version": "1.0.0",
+    "description": "An AI-powered Nutrition Agent built on IBM watsonx Orchestrate for personalized dietary management."
+  },
+  "agent_architecture": {
+    "agent_name": "Nutrition Agent",
+    "platform": "IBM watsonx Orchestrate",
+    "llm_configuration": {
+      "model": "GPT-OSS 120B",
+      "provider": "OpenAI (via Groq)",
+      "agent_style": "ReAct",
+      "capabilities": ["understand", "plan", "call tools", "reason"]
+    }
+  },
+  "knowledge_base": {
+    "sources": [
+      {
+        "filename": "cover letter resume agetric",
+        "description": "a detailed behaviour acts",
+        "author_id": "IBMid-697001NKB3",
+        "last_updated": "12 days ago"
+      }
+    ]
+  },
+  "behavior_and_routing": {
+    "core_instructions": "Provide evidence-based dietary guidance, structured meal planning, and actionable nutrition insights.",
+    "debug_mode": true
+  },
+  "deployment_channels": [
+    "watsonx Orchestrate Chat home page",
+    "Embedded agent UI"
+  ]
+}
